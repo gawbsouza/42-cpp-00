@@ -6,7 +6,7 @@
 /*   By: gasouza <gasouza@student.42sp.org.br >     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 06:23:26 by gasouza           #+#    #+#             */
-/*   Updated: 2024/01/11 07:04:43 by gasouza          ###   ########.fr       */
+/*   Updated: 2024/01/12 07:22:26 by gasouza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,16 +177,17 @@ void PhoneBookMenu::doSearchOption()
         
         std::cout << "Index to show: ";
         std::cin >> index;
-        clearInputStream();
         
         if (std::cin.fail())
         {
             std::cout 
                 << RED_COLOR << "Invalid input!" << RESET_COLOR << std::endl;
+            clearInputStream();
             continue;
         }
         
         if (index == 0) {
+            clearInputStream();
             clearScreen();
             return;
         }
@@ -212,6 +213,7 @@ void PhoneBookMenu::doSearchOption()
     }
     
     clearScreen();
+    clearInputStream();
     std::cout << ":: Showing contact (" << index << ") ::" << std::endl << std::endl ;
     std::cout << "First Name: " << con.getFirstName() << std::endl;
     std::cout << "Last Name: " << con.getLastName() << std::endl;
