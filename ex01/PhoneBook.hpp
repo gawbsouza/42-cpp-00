@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gasouza <gasouza@student.42sp.org.br >     +#+  +:+       +#+        */
+/*   By: gasouza <gasouza@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 22:07:38 by gabriel           #+#    #+#             */
-/*   Updated: 2024/01/09 08:17:50 by gasouza          ###   ########.fr       */
+/*   Updated: 2024/01/12 11:31:47 by gasouza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ class PhoneBook
     
 private:
 
-    Contact contactList[MAX_CONTACTS];
     int nextSlot;
-    
+	
+    Contact contactList[MAX_CONTACTS];
     void printColumn(std::string str);
 
 public:

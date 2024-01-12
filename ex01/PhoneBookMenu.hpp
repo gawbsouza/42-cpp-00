@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBookMenu.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gasouza <gasouza@student.42sp.org.br >     +#+  +:+       +#+        */
+/*   By: gasouza <gasouza@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 06:23:39 by gasouza           #+#    #+#             */
-/*   Updated: 2024/01/10 06:39:25 by gasouza          ###   ########.fr       */
+/*   Updated: 2024/01/12 11:34:15 by gasouza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define RESET_COLOR     "\033[39m"
 # define RED_COLOR       "\033[91m"
 # define GREEN_COLOR     "\033[92m"
-# define CYAN_COLOR     "\033[96m"
+# define CYAN_COLOR      "\033[96m"
 
 class PhoneBookMenu {
 
@@ -46,6 +46,7 @@ private:
     std::string readValueWithMinLength(std::string desc, size_t minLength);
 
 public:
+
     PhoneBookMenu(PhoneBook *phoneBook);
     void readLoop();
 
