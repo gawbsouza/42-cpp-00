@@ -6,7 +6,7 @@
 /*   By: gasouza <gasouza@student.42sp.org.br >     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 06:23:26 by gasouza           #+#    #+#             */
-/*   Updated: 2024/01/12 07:22:26 by gasouza          ###   ########.fr       */
+/*   Updated: 2024/01/15 20:22:22 by gasouza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <cstring>
 #include <cstdlib>
 #include <limits>
+#include <cstdio>
 
 #include "PhoneBookMenu.hpp"
 
@@ -25,6 +26,7 @@ void clearScreen()
 
 void clearInputStream()
 {
+    std::clearerr(stdin);
     std::cin.clear();
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }
@@ -76,7 +78,7 @@ std::string PhoneBookMenu::readOption()
 {
     std::string option;
     
-    std::cout << "Please select and option bellow:" << std::endl;
+    std::cout << "Please select an option bellow:" << std::endl;
     std::cout << std::endl;
     listOptions();
     std::cout << std::endl;
@@ -84,15 +86,20 @@ std::string PhoneBookMenu::readOption()
     for (;;) {
         
         std::cout << "Your input: ";
-        std::getline(std::cin, option);
-
-        for (std::size_t i = 0; i < option.size(); i++) {
-            option[i] = toupper(option[i]);
-        }
+        std::cin >> option;
         
+        if (!std::cin.eof())
+        {
+            for (std::size_t i = 0; i < option.size(); i++) {
+                option[i] = toupper(option[i]);
+            }
+        }
+
+        clearInputStream();
+
         if (!isValidOption(option)) {
             std::cout 
-                << RED_COLOR << "Invalid Option!" 
+                << RED_COLOR << "Invalid option!" 
                 << RESET_COLOR << std::endl;
             continue;
         }
@@ -178,8 +185,11 @@ void PhoneBookMenu::doSearchOption()
         std::cout << "Index to show: ";
         std::cin >> index;
         
-        if (std::cin.fail())
+        if (std::cin.fail() || std::cin.eof())
         {
+            if (std::cin.eof())
+                std::cout << std::endl;
+                
             std::cout 
                 << RED_COLOR << "Invalid input!" << RESET_COLOR << std::endl;
             clearInputStream();
